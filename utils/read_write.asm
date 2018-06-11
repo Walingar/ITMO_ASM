@@ -3,6 +3,9 @@
                 global          read_long
                 global          write_long
                 global          write_char
+                global          set_zero
+                global          is_zero
+                global          print_string
                 global          exit
 ; adds 64-bit number to long number
 ;    rdi -- address of summand #1 (long number)
