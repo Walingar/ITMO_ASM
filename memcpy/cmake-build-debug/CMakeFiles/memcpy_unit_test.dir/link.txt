@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/memcpy_unit_test.dir/memcpy_test.cpp.o  -o memcpy_unit_test googletest/googlemock/gtest/libgtestd.a googletest/googlemock/gtest/libgtest_maind.a googletest/googlemock/gtest/libgtestd.a -pthread 
