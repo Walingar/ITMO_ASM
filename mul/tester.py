@@ -24,10 +24,8 @@ def execute(args):
 
 def test(program, times=100):
 	for i in range(times):
-		a_rand = randrange(0, 10**100)
-		b_rand = randrange(0, 10**100)
-		a = max(a_rand, b_rand)
-		b = min(a_rand, b_rand)
+		a = randrange(0, 10**100)
+		b = randrange(0, 10**100)
 		excepted = str(a * b)
 		proc = Popen("./" + program, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		
