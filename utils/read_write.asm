@@ -6,7 +6,9 @@
                 global          set_zero
                 global          is_zero
                 global          print_string
+                global          mul_long_short
                 global          exit
+
 ; adds 64-bit number to long number
 ;    rdi -- address of summand #1 (long number)
 ;    rax -- summand #2 (64-bit unsigned)
