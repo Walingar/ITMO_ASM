@@ -102,6 +102,26 @@ TEST(memcpy, memcpy16_aligned_rand_Test) {
     char dist[size + 1];
 
     double start_time = clock();
+    memcpy16_aligned(dist, src + 1, sizeof src - 1);
+    double end_time = clock();
+
+    for (int i = 1; i < sizeof src; ++i) {
+        ASSERT_EQ(src[i], dist[i - 1]);
+    }
+    print_time(start_time, end_time);
+}
+
+TEST(memcpy, memcpy16_aligned_with_shifted_rand_Test) {
+    srand(time(0));
+    char src[size + 1];
+    for (int i = 0; i < size; ++i) {
+        src[i] = char(rand() % 20 + 'a');
+    }
+    src[size] = '\0';
+
+    char dist[size + 1];
+
+    double start_time = clock();
     memcpy16_aligned(dist, src, sizeof src);
     double end_time = clock();
 

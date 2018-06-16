@@ -22,14 +22,32 @@ TEST(word_count, simple_a_lot_of_spaces_Test) {
 
 TEST(word_count, fast_Test) {
     char src[] = "mama mila ramu";
-    size_t counted = count(src, sizeof src);
+    size_t counted = fast_count(src, sizeof src);
     ASSERT_EQ(counted, 3);
 }
 
 TEST(word_count, fast_a_lot_of_spaces_Test) {
     char src[] = "                              baq  mq  pmq papp  e           lxdakix p q iwa   mtwi  gcdvvv s   p f  rae g ma pu q g clviu r  kv ntf  sc       ";
-    size_t counted = count(src, sizeof src);
+    size_t counted = fast_count(src, sizeof src);
     ASSERT_EQ(counted, word_count_simple(src, sizeof src));
+}
+
+TEST(word_count, fast_a_with_lot_of_spaces_Test) {
+    char src[] = "               aaaaaaaaaaaaaaa                ";
+    size_t counted = fast_count(src, sizeof src);
+    ASSERT_EQ(counted, 1);
+}
+
+TEST(word_count, fast_a_with_lot_of_spaces_and_shifted_Test) {
+    char src[] = "               aaaaaaaaaaaaaaa                ";
+    size_t counted = fast_count(src + 1, sizeof src - 1);
+    ASSERT_EQ(counted, 1);
+}
+
+TEST(word_count, fast_18_a_with_lot_of_spaces_Test) {
+    char src[] = "              aaaaaaaaaaaaaaaaa               ";
+    size_t counted = fast_count(src, sizeof src);
+    ASSERT_EQ(counted, 1);
 }
 
 TEST(word_count, fast_rand_Test) {
@@ -46,7 +64,7 @@ TEST(word_count, fast_rand_Test) {
     }
     src[size] = '\0';
 
-    size_t counted = count(src, sizeof src);
+    size_t counted = fast_count(src, sizeof src);
 
     ASSERT_EQ(counted, word_count_simple(src, sizeof src));
 }
@@ -70,9 +88,9 @@ TEST(word_count, fast_burn_Test) {
 
         }
         src[size] = '\0';
-
+        // printf("%s\n", src);
         double start_time_fast = clock();
-        size_t counted_fast = count(src, sizeof src);
+        size_t counted_fast = fast_count(src, sizeof src);
         double end_time_fast = clock();
 
         double start_time_simple = clock();
@@ -93,7 +111,6 @@ TEST(word_count, fast_burn_Test) {
     }
 
     printf("\nFinish.\n");
-
     printf("%10s", "Fast: ");
     print_time(full_time_fast_start, full_time_fast_end);
 
