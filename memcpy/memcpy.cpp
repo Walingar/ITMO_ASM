@@ -66,7 +66,7 @@ void memcpy16(void *dist, const void *src, size_t count) {
 }
 
 void memcpy16_aligned(void *dist, const void *src, size_t count) {
-    size_t remaining = count % 16;
+    size_t remaining = 16 - count % 16;
     memcpy8(dist, src, remaining);
     auto new_dist = (void *) ((size_t) dist + remaining);
     auto new_src = (void *) ((size_t) src + remaining);

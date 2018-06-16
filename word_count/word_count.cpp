@@ -28,7 +28,7 @@ size_t word_count_simple(const char *str, size_t len) {
 
 
 std::pair<size_t, size_t> align(const char *str) {
-    size_t remaining = 16 + (size_t) str % 16;
+    size_t remaining = 32 - (size_t) str % 16;
     size_t count = word_count_simple(str, remaining);
 
     return {remaining, count};
